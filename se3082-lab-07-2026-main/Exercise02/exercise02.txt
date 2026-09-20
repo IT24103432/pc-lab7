@@ -1,1 +1,19 @@
+Exercise 02 - Replace Broadcast with Scatter
+Source: sum_scatter.c
+
+MPI_Bcast was replaced with MPI_Scatter. Only root allocates the full array;
+each process receives only its own chunk of N / size elements.
+
+Output (mpirun -np 4 ./sum_scatter):
+
+Root filled array with values 1 to 1000000
+  Rank 0: received 250000 elements [1 .. 250000] => local_sum = 31250125000
+  Rank 1: received 250000 elements [250001 .. 500000] => local_sum = 93750125000
+  Rank 2: received 250000 elements [500001 .. 750000] => local_sum = 156250125000
+  Rank 3: received 250000 elements [750001 .. 1000000] => local_sum = 218750125000
+
+[Scatter] Total sum   = 500000500000
+[Scatter] Expected    = 500000500000
+[Scatter] Correct?    = YES
+[Scatter] Time        = 0.0044 sec
 

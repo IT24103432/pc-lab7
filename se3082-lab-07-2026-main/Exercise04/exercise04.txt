@@ -1,1 +1,19 @@
+Exercise 04 - Replace Gather with Reduce
+Source: sum_reduce.c
+
+MPI_Gather and the manual loop were replaced with MPI_Reduce (MPI_SUM).
+The total is only valid on root.
+
+Output (mpirun -np 4 ./sum_reduce):
+
+Root filled array with values 1 to 1000000
+  Rank 0: local_sum = 31250125000
+  Rank 1: local_sum = 93750125000
+  Rank 2: local_sum = 156250125000
+  Rank 3: local_sum = 218750125000
+
+[Reduce] Total sum   = 500000500000
+[Reduce] Expected    = 500000500000
+[Reduce] Correct?    = YES
+[Reduce] Time        = 0.0035 sec
 
